@@ -3,7 +3,7 @@ A simple and secure Password Management System made completely in Python.
 
 ## Installation
 ### Installing the files
-Run the file **"installaltion/install.py"** to install the program files.
+Run the file **"installation/install.py"** to install the program files.
 ### Running the program
 Look for a folder **"Password Keeper"** in the same directory as the install.py and run the file **"main.py"** inside it.
 
