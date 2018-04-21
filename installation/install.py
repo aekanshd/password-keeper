@@ -16,7 +16,7 @@ def WriteFileInPath(content, path):
         return False
 
 
-# This function creates creates given folders.
+# This function creates given folders.
 def installFolder(folder):
     try:
         os.makedirs(folder)
