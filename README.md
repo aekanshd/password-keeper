@@ -28,4 +28,4 @@ Also, I'll be mentioning your names over here!
 
 ### UI/Enhancements
 
-1. [@madwithkode](https://github.com/madewithkode/) - Made Changes to the overall UI of the app and tried as much as I could to reduce number of unnecessary roots being created where necessary.
+1. [@madewithkode](https://github.com/madewithkode/) - Made Changes to the overall UI of the app and tried as much as I could to reduce number of unnecessary roots being created where necessary.
