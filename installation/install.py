@@ -4,13 +4,14 @@
 
 import os, errno
 
+
 # Function to write a file at a given path
 def WriteFileInPath(content, path):
     try:
         with open(path, "w+") as f:
             f.write(content)  # TODO: CHECK IF NEW LINE CHARACTER IS NEEDED OR NOT
             f.close()
-            return "Created "+path
+            return "Created " + path
     except IOError as e:
         print(e)
         return False
@@ -20,12 +21,13 @@ def WriteFileInPath(content, path):
 def installFolder(folder):
     try:
         os.makedirs(folder)
-        print("Created directory",folder)
+        print("Created directory", folder)
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
 
-main='''
+
+main = '''
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -61,7 +63,8 @@ else:
     import m
     m.showWindow()
 '''
-al='''
+al = '''
+
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -106,7 +109,7 @@ def decrypt(pwd):
 
     f.Log("Decrypt password request.","decrypt[al]")
     return pwd'''
-ap='''
+ap = '''
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -202,8 +205,9 @@ def checkPassword(pwd):
                 return False
     except IOError as e:
         f.Log(e, "checkPassword")
-        return False'''
-d='''
+        return False
+'''
+d = '''
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -301,8 +305,9 @@ def deleteAccount(id):
             accounts.pop(id,None)
             writeData(f.DICTtoJSON(accounts))
         f.Log("Account deleted: " + id, "deleteAccount")
-        return True'''
-f='''
+        return True
+'''
+f = '''
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -330,7 +335,7 @@ def Log(thrown_error, by):
 # Log applications startups
 def LogStartUp():
     f = open("bin/logs.txt", "a+")
-    f.write("\\n=============================================\\n\\nApplication Started at "+str(datetime.datetime.now())+ "\\n\\n")
+    f.write("\\\n=============================================\\\n\\\nApplication Started at "+str(datetime.datetime.now())+ "\\\n\\\n")
     f.close()
 
 
@@ -390,8 +395,10 @@ def createDataFile():
             return True
     except IOError as e:
         Log(e, "createDataFile")
-        return False'''
-m='''
+        return False
+'''
+m = '''
+
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -399,12 +406,15 @@ m='''
 
 # This file displays the main screen of the app
 from tkinter import *
+import tkinter as tk
+from tkinter import scrolledtext as st
 from tkinter import messagebox
 from tkinter import simpledialog
 import f
 import d
 import ap
 import al
+
 
 
 # This function is used to check if this module was imported correctly or not.
@@ -423,13 +433,25 @@ def showWindow():
     roots = Tk()  # This creates the window, just a blank one.
     roots.title('Password Keeper')  # This renames the title of said window to 'signup'
     window_height = "175" if d.countAccounts() == -1 else str(175 + (d.countAccounts() * 35))
-    roots.geometry('480x'+window_height)
+    roots.geometry('580x'+window_height)
+    roots.resizable(0,0)
+
+    """Contributionds by Prince Kelvin Onyenanu,
+    to the Password Keeper App"""
+    menubar = tk.Menu(roots)
+    roots.config(menu=menubar)
+
+    settingsMenu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Menu", menu=settingsMenu)
+    settingsMenu.add_command(label="About", command=about)
+    settingsMenu.add_separator()
+    settingsMenu.add_command(label="Exit", command=exitWindow)
+
 
     # Row 1
     # Title
     title = Label(roots, text='Password Keeper', font="Helvetica 20 bold")
     title.grid(row=0, column=0, columnspan=3, sticky=W)
-    showSignature()
 
 
     # Row 2 is reserved for unlocked session notice.
@@ -447,7 +469,7 @@ def showWindow():
     refreshBtn.grid(row=3, column=1, sticky=E, padx=5)
     # Main Buttons - Delete All, Add Entry
     if d.countAccounts() > 0:
-        deleteAllBtn = Button(roots, text='Delete All', command=confirmDeleteAll)
+        deleteAllBtn = Button(roots, text='Delete All', fg='red', command=confirmDeleteAll)
         deleteAllBtn.grid(row=3, column=2, sticky=E, padx=5)
         addEntryBtn = Button(roots, text='Add Entry', command=addEntry)
         addEntryBtn.grid(row=3, column=4, sticky=E, padx=5)
@@ -461,7 +483,7 @@ def showWindow():
         unlockBtn = Button(roots, text='Unlock Session', command=unlockSession)
         unlockBtn.grid(row=3, column=3, sticky=E, padx=5)
 
-    myaccL = Label(roots, text='\\nMy Accounts', font="Helvetica 10 bold")
+    myaccL = Label(roots, text='\\nMy Accounts', font="Helvetica 12 bold")
     myaccL.grid(row=4, column=0, sticky=W, columnspan=3)
 
     # Row 3
@@ -470,7 +492,7 @@ def showWindow():
         nodataL.grid(row=5, column=0, sticky=W, columnspan=3)
     elif d.countAccounts() == -1:
         errorL = Label(roots, text='\\nThere was an error fetching the data.',fg="red")
-        errorL.grid(row5, column=0, sticky=W, columnspan=3)
+        errorL.grid(row=5, column=0, sticky=W, columnspan=3)
     else:
         displayAccounts()
 
@@ -517,8 +539,9 @@ def addEntry():
     global gapL
     entryWindow = Tk()
     entryWindow.title('New Account')
-    entryWindow.geometry('250x250')
-    title = Label(entryWindow, text='Enter Account Details\\n', font="Helvetica 15 bold")
+    entryWindow.geometry('350x250')
+    entryWindow.resizable(0,0)
+    title = Label(entryWindow, text='Enter New Account Details\\n', font="Helvetica 15 bold")
     title.grid(row=0, column=0, columnspan=3, sticky=W)
     nameL = Label(entryWindow, text='Account Name: ')
     nameL.grid(row=1, column=0, sticky=W)
@@ -534,7 +557,7 @@ def addEntry():
     passE.grid(row=3, column=1)
     gapL = Label(entryWindow, text='\\n')
     gapL.grid(row=4, column=0, columnspan=2, sticky=W)
-    entryBtn = Button(entryWindow, text='Add New Account', command=addEntryHandler)
+    entryBtn = Button(entryWindow, text='Add New Account', fg='green', command=addEntryHandler)
     entryBtn.grid(row=5, column=1, columnspan=2, sticky=E)
 
 
@@ -561,9 +584,15 @@ def displayAccounts():
     row = 6
     for key, value in accounts.items():
         account = value
-        Label(roots, text=account["n"]).grid(row=row, column=0, sticky=W, pady=5)
-        Button(roots, text='View Details', command=lambda key=key: viewDetails(key)).grid(row=row, column=1, sticky=E,
-                                                                                          pady=5)
+        Label(roots, text=account["n"], font="sans-serif 10 bold").grid(row=row, column=0, sticky=W, pady=5)
+        Button(roots, text='View Details', fg='green', command=lambda key=key: viewDetails(key)).grid(row=row, column=2, sticky=E,padx=10)
+        if not unlocked:
+            deleteBtn = Button(roots, text='Delete Account', command=lambda key=key: deleteEntryHandler(key))
+            deleteBtn.grid(row=row, column=3, padx=10, sticky=E)
+        else:
+          deleteBtn = Button(roots, text='Delete Account', command=lambda key=key: deleteEntryHandler(key))
+          deleteBtn.grid(row=row, column=3, padx=10, sticky=E)  
+
         row += 1
 
 
@@ -583,17 +612,20 @@ def viewDetails(id):
 
     detailsWindow = Tk()
     detailsWindow.title('Account Details')
-    detailsWindow.geometry('400x260')
+    detailsWindow.geometry('450x260')
+    detailsWindow.resizable(0,0)
     title = Label(detailsWindow, text=name + '\\n', font="Helvetica 15 bold")
     title.grid(row=0, column=0, columnspan=3, sticky=W)
-    unameL = Label(detailsWindow, text='Username: ')
+    unameL = Label(detailsWindow, text='Username', font="sans-serif 10 bold")
     unameL.grid(row=1, column=0, sticky=W)
     unameTL = Label(detailsWindow, text=username)
-    unameTL.grid(row=1, column=1, sticky=W)
-    pwdL = Label(detailsWindow, text='Password: ')
-    pwdL.grid(row=2, column=0, sticky=W)
+    unameTL.grid(row=2, column=0, sticky=W)
+    pwdL = Label(detailsWindow, text='Password', font="sans-serif 10 bold")
+    pwdL.grid(row=1, column=1, sticky=W)
     pwdTL = Label(detailsWindow, text=password)
     pwdTL.grid(row=2, column=1, sticky=W)
+
+
     if not unlocked:
         detailsGapL = Label(detailsWindow, text='\\n', justify=LEFT)
         detailsGapL.grid(row=3, column=0, columnspan=4, sticky=W)
@@ -603,10 +635,8 @@ def viewDetails(id):
         decryptPwdE.grid(row=4, column=1, columnspan=3, sticky=W)
         detailsGapL2 = Label(detailsWindow, text='\\nEnter global password to decrypt info.\\n', justify=LEFT)
         detailsGapL2.grid(row=5, column=0, columnspan=3, sticky=W)
-        deleteBtn = Button(detailsWindow, text='Delete Account', command=lambda key=id: deleteEntryHandler(key))
-        deleteBtn.grid(row=6, column=0, sticky=E)
         decryptPwdBtn = Button(detailsWindow, text='Decrypt Password', command=lambda key=data[id]["p"]: decryptHandler(key))
-        decryptPwdBtn.grid(row=6, column=1, columnspan=4, sticky=E,padx=15)
+        decryptPwdBtn.grid(row=4, column=4, columnspan=4, sticky=E,padx=15)
     else:
         detailsGapL = Label(detailsWindow, text='\\n', justify=LEFT)
         detailsGapL.grid(row=3, column=0, columnspan=4, sticky=W)
@@ -616,8 +646,7 @@ def viewDetails(id):
         loginPwdBtn.grid(row=6, column=5, columnspan=4, sticky=E)
         detailsGapL2 = Label(detailsWindow, text='\\n\\n')
         detailsGapL2.grid(row=7, column=0, columnspan=2, sticky=W)
-        deleteBtn = Button(detailsWindow, text='Delete Account', command=lambda key=id: deleteEntryHandler(key))
-        deleteBtn.grid(row=8, column=1, padx=15, sticky=E)
+
 
 
 # This function confirms the deletion password
@@ -644,14 +673,12 @@ def decryptHandler(pwd):
 
 # This fucntion adds our signature
 def showSignature():
-    signL = Label(roots,
-                          text='                                                    This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.')
-    signL.grid(row=0, column=10, sticky=W)
+    text='This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.'
+    return text
 
 
 # This function confirms the deletion of an account by prompts.
 def deleteEntryHandler(id):
-    detailsWindow.destroy()
     if not unlocked:
         pwd = simpledialog.askstring("Delete Account?",
                                      "Enter your global password to confirm deletion of this account.\\n\\nWarning: This can not be undone.",
@@ -716,7 +743,7 @@ def deleteAll():
 def unlockSession():
     global unlocked
     pwd = simpledialog.askstring("Unlock Session",
-                                 "If you unlock this session, you will not be asked to enter a password\\neach time you want to decrypt an account's information.\\nUse when safe.\\n\\nEnter your global password to continue.",
+                                 "If you unlock this session, you will not be asked to enter a password\\neach time you want to decrypt or delete an account's information.\\nUse when safe.\\n\\nEnter your global password to continue.",
                                  show='*')
     if pwd is not None:
         if ap.checkPassword(pwd) == True:
@@ -734,8 +761,30 @@ def lockSession():
     unlocked = False
     f.Log("This session has been locked.", "lockSession")
     refreshWindow()
+
+# This function displays the about
+def about(*event):
+    global aboutWindow
+
+    aboutWindow = Tk()
+    aboutWindow.title("About the developers")
+    aboutWindow.geometry("528x297")
+    aboutWindow.resizable(0, 0)
+
+    aboutText = showSignature()
+
+    paper = st.ScrolledText(aboutWindow, width=350, height=200, font=("Consolas", 11))
+    paper.insert("1.0", aboutText)
+    paper.configure(state='disabled')
+    paper.pack()
+
+    aboutWindow.mainloop()
+
+#This function destroys the main window
+def exitWindow(*event):
+    roots.destroy()
 '''
-s='''
+s = '''
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -743,7 +792,10 @@ s='''
 
 # This file displays the signup screen
 from tkinter import *
+import tkinter as tk
+from tkinter import scrolledtext as st
 import f
+import m
 
 # This function is used to check if this module was imported correctly or not.
 def works():
@@ -756,10 +808,22 @@ def showWindow():
     roots = Tk() # This creates the window, just a blank one.
     roots.title('Password Keeper') # This renames the title of said window to 'signup'
     roots.geometry('500x200')
-    instruction = Label(roots, text='Please Enter New Credentials\\n',font="Helvetica 20 bold") # This puts a label, so just a piece of text saying 'please enter blah'
+    roots.resizable(0,0)
+
+    #this creates a menu
+    menubar = tk.Menu(roots)
+    roots.config(menu=menubar)
+
+    settingsMenu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Menu", menu=settingsMenu)
+    settingsMenu.add_command(label="About", command=about)
+    settingsMenu.add_separator()
+    settingsMenu.add_command(label="Exit", command=exitWindow)
+
+    instruction = Label(roots, text='Please Enter New Credentials',  font="Helvetica 20 bold") # This puts a label, so just a piece of text saying 'please enter blah5
     instruction.grid(row=0, column=0, columnspan=3, sticky=E) # This just puts it in the window, on r ow 0, col 0. If you want to learn more look up a tkinter tutorial :)
 
-    headingL = Label(roots, text='Welcome to the Password Keeper. We need you to enter a global password which will be asked each time you want to view stored passwords.\\n',justify=LEFT,wraplength=300) # This just does the same as above, instead with the text new username.
+    headingL = Label(roots, text='\\nWelcome to the Password Keeper. We need you to enter a global password which will be asked each time you want to view stored passwords.\\n',justify='left',wraplength=300) # This just does the same as above, instead with the text new username.
     headingL.grid(row=1, column=0, columnspan=3, rowspan=3,sticky=W) # Same thing as the instruction var just on different rows. :) Tkinter is like that.
     showSignature()
 
@@ -769,7 +833,7 @@ def showWindow():
     # nameE.grid(row=1, column=1) # You know what this does now :D
     pwordE = Entry(roots, show='*') # Same as above, yet 'show="*"' What this does is replace the text with *, like a password box :D
     pwordE.grid(row=5, column=1) # ^^
-    signupButton = Button(roots, text='Continue', command=storeGlobalPwd) # This creates the button with the text 'signup', when you click it, the command 'fssignup' will run. which is the def
+    signupButton = Button(roots, text='Continue', fg="green", command=storeGlobalPwd) # This creates the button with the text 'signup', when you click it, the command 'fssignup' will run. which is the def
     signupButton.grid(row=5,column=3, sticky=W)
     roots.mainloop() # This just makes the window keep open, we will destroy it soon
 
@@ -787,25 +851,46 @@ def storeGlobalPwd():
 
 # This fucntion adds our signature
 def showSignature():
-    signL = Label(roots,
-                  text='                                                    This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.')
-    signL.grid(row=0, column=10, sticky=W)
+    text = 'This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.'
+    return text
 
+# This function displays the about
+def about(*event):
+    global aboutWindow
+
+    aboutWindow = Tk()
+    aboutWindow.title("About the developers")
+    aboutWindow.geometry("528x297")
+    aboutWindow.resizable(0, 0)
+
+    aboutText = showSignature()
+
+    paper = st.ScrolledText(aboutWindow, width=350, height=200, font=("Consolas", 11))
+    paper.insert("1.0", aboutText)
+    paper.configure(state='disabled')
+    paper.pack()
+
+    aboutWindow.mainloop()
+
+#This function destroys the main window
+def exitWindow(*event):
+    roots.destroy()
 '''
 
 # Start installing the files
-print("This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.")
+print(
+    "This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.")
 print("Creating directories...")
 installFolder("Password Keeper")
 installFolder("Password Keeper/bin")
 installFolder("Password Keeper/res")
 print("Creating main file...")
-print(WriteFileInPath(main,"Password Keeper/main.py"))
+print(WriteFileInPath(main, "Password Keeper/main.py"))
 print("Creating other files...")
-print(WriteFileInPath(al,"Password Keeper/res/al.py"))
-print(WriteFileInPath(ap,"Password Keeper/res/ap.py"))
-print(WriteFileInPath(d,"Password Keeper/res/d.py"))
-print(WriteFileInPath(f,"Password Keeper/res/f.py"))
-print(WriteFileInPath(m,"Password Keeper/res/m.py"))
-print(WriteFileInPath(s,"Password Keeper/res/s.py"))
+print(WriteFileInPath(al, "Password Keeper/res/al.py"))
+print(WriteFileInPath(ap, "Password Keeper/res/ap.py"))
+print(WriteFileInPath(d, "Password Keeper/res/d.py"))
+print(WriteFileInPath(f, "Password Keeper/res/f.py"))
+print(WriteFileInPath(m, "Password Keeper/res/m.py"))
+print(WriteFileInPath(s, "Password Keeper/res/s.py"))
 print("Installation finished.")
