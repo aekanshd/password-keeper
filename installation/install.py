@@ -49,7 +49,7 @@ import f
 f.LogStartUp()
 
 # Check if the modules work or not.
-print("Application started. This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.")
+print("Application started. This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).")
 
 # 0n the launch, we will check if the application was already launched or not by viewing our data fileset.
 # TODO: Install the res folder along with the files, and empty bin folder
@@ -673,7 +673,7 @@ def decryptHandler(pwd):
 
 # This fucntion adds our signature
 def showSignature():
-    text='This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.'
+    text='This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).'
     return text
 
 
@@ -794,6 +794,8 @@ s = '''
 from tkinter import *
 import tkinter as tk
 from tkinter import scrolledtext as st
+from tkinter import messagebox as mb
+import re
 import f
 import m
 
@@ -833,11 +835,21 @@ def showWindow():
     # nameE.grid(row=1, column=1) # You know what this does now :D
     pwordE = Entry(roots, show='*') # Same as above, yet 'show="*"' What this does is replace the text with *, like a password box :D
     pwordE.grid(row=5, column=1) # ^^
-    signupButton = Button(roots, text='Continue', fg="green", command=storeGlobalPwd) # This creates the button with the text 'signup', when you click it, the command 'fssignup' will run. which is the def
+    signupButton = Button(roots, text='Continue', fg="green", command=strongPass) # This creates the button with the text 'signup', when you click it, the command 'fssignup' will run. which is the def
+    roots.bind('<Return>',lambda event: strongPass())
     signupButton.grid(row=5,column=3, sticky=W)
     roots.mainloop() # This just makes the window keep open, we will destroy it soon
 
     #nameE.get()
+
+def strongPass():
+    pattern = '^(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'
+    passwd = pwordE.get()
+    if re.match(pattern,passwd):
+        storeGlobalPwd()
+    else:
+        mb.showwarning("warning","Password should contain at least 1 capital letter, 1 small letter, 1 number and 8 character length")
+
 
 def storeGlobalPwd():
     import ap
@@ -851,7 +863,7 @@ def storeGlobalPwd():
 
 # This fucntion adds our signature
 def showSignature():
-    text = 'This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.'
+    text = 'This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).'
     return text
 
 # This function displays the about
@@ -879,7 +891,7 @@ def exitWindow(*event):
 
 # Start installing the files
 print(
-    "This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.")
+    "This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).")
 print("Creating directories...")
 installFolder("Password Keeper")
 installFolder("Password Keeper/bin")
