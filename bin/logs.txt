@@ -1,0 +1,4 @@
+=============================================Application Started at 2020-03-20 18:20:53.5546572020-03-20 18:20:53.555035 mainFile This is the first launch.
+=============================================Application Started at 2020-03-20 18:21:27.4302972020-03-20 18:21:27.430598 mainFile This is the first launch.
+=============================================Application Started at 2020-03-20 18:21:53.6024642020-03-20 18:21:53.602734 mainFile This is the first launch.
+=============================================Application Started at 2020-03-20 18:23:37.0714352020-03-20 18:23:37.071735 mainFile This is the first launch.
