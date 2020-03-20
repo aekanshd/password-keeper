@@ -26,7 +26,12 @@ def Log(thrown_error, by):
 # Log applications startups
 def LogStartUp():
     f = open("bin/logs.txt", "a+")
-    f.write("\n=============================================\n\nApplication Started at "+str(datetime.datetime.now())+ "\n\n")
+    f.write("\
+=============================================\
+\
+Application Started at "+str(datetime.datetime.now())+ "\
+\
+")
     f.close()
 
 

@@ -1,4 +1,5 @@
 
+
 # made with love by Aekansh Dixit (https://github.com/aekanshd/) 
 # Please credit me in all your future updates, that's all - you're free to use this code commercially, too.
 # (c) Aekansh Dixit, 2018 provided under The MIT License (https://opensource.org/licenses/MIT)
@@ -190,9 +191,9 @@ def displayAccounts():
             deleteBtn = Button(roots, text='Delete Account', command=lambda key=key: deleteEntryHandler(key))
             deleteBtn.grid(row=row, column=3, padx=10, sticky=E)
         else:
-          deleteBtn = Button(roots, text='Delete Account', command=lambda key=key: deleteAccount(key))
+          deleteBtn = Button(roots, text='Delete Account', command=lambda key=key: deleteEntryHandler(key))
           deleteBtn.grid(row=row, column=3, padx=10, sticky=E)  
-                                                                        
+
         row += 1
 
 
@@ -225,7 +226,7 @@ def viewDetails(id):
     pwdTL = Label(detailsWindow, text=password)
     pwdTL.grid(row=2, column=1, sticky=W)
 
-    
+
     if not unlocked:
         detailsGapL = Label(detailsWindow, text='\n', justify=LEFT)
         detailsGapL.grid(row=3, column=0, columnspan=4, sticky=W)
@@ -246,7 +247,7 @@ def viewDetails(id):
         loginPwdBtn.grid(row=6, column=5, columnspan=4, sticky=E)
         detailsGapL2 = Label(detailsWindow, text='\n\n')
         detailsGapL2.grid(row=7, column=0, columnspan=2, sticky=W)
-        
+
 
 
 # This function confirms the deletion password
@@ -273,7 +274,7 @@ def decryptHandler(pwd):
 
 # This fucntion adds our signature
 def showSignature():
-    text='This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.'
+    text='This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).'
     return text
 
 
