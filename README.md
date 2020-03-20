@@ -1,11 +1,16 @@
 # Password Keeper
 A simple and secure Password Management System made completely in Python.
 
+## Download and Run 
+Now, you just only have to download the project and run the main file directly.
+python3 main.py
+
 ## Installation
 ### Installing the files
 Run the file **"installation/install.py"** to install the program files.
 ### Running the program
 Look for a folder **"Password Keeper"** in the same directory as the install.py and run the file **"main.py"** inside it.
+
 
 ## Required Modules
 This Python Project uses the following dependencies:
