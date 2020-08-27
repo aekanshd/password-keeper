@@ -23,7 +23,7 @@ This Python Project uses the following dependencies:
 The entire source code of the program is stored under the **"raw"** folder. Feel free to modify/reuse as you like. Make sure you credit me somewhere, though.
 
 ## Contribution
-Everyone is welcome to contribute to this project and build more functionality into it. Make a fork, imporve/fix it and create a pull request. I'd love it! :)
+Everyone is welcome to contribute to this project and build more functionality into it. Make a fork, improve/fix it and create a pull request. I'd love it! :)
 Also, I'll be mentioning your names over here!
 
 ### UI/Enhancements
