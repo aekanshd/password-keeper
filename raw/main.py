@@ -20,7 +20,7 @@ import f
 f.LogStartUp()
 
 # Check if the modules work or not.
-print("Application started. This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester.")
+print("Application started. This project was made by Aekansh Dixit (First Year Student of PES University, Bengaluru) for the Python Project Assignments of the first semester and Collaborated by Simranjot Sandhu ( HEC, Jagadhri)).")
 
 # 0n the launch, we will check if the application was already launched or not by viewing our data fileset.
 # TODO: Install the res folder along with the files, and empty bin folder
